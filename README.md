@@ -1,4 +1,4 @@
-# Calculus (Pavlychev.Numbers)
+# Calculus (Pavlychev.Calculus)
 Complex number calculating library with some calculus elements
 
 ## ToDo:
