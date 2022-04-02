@@ -6,6 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Numbers\Calculus.csproj" />
+    <ProjectReference Include="..\Calculus\Calculus.csproj" />
   </ItemGroup>
 </Project>

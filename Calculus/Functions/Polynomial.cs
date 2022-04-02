@@ -6,7 +6,10 @@ namespace Pavlychev.Calculus.Functions
     /// </summary>
     public class Polynomial : IFunction
     {
-        IFunction[] Monomials { get; set; }
+        /// <summary>
+        /// Одночлены
+        /// </summary>
+        public IFunction[] Monomials { get; set; }
 
         public IFunction Derivative
         {
@@ -78,6 +81,10 @@ namespace Pavlychev.Calculus.Functions
             }
         }
 
+        /// <summary>
+        /// Создание многочлена.
+        /// </summary>
+        /// <param name="monomials">Одночлены.</param>
         public Polynomial(params IFunction[] monomials)
         {
             Monomials = monomials;

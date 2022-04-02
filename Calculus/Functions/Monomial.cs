@@ -2,25 +2,24 @@
 namespace Pavlychev.Calculus.Functions
 {
     /// <summary>
-    /// Класс одночлен вида axⁿ
+    /// Класс одночлен вида axⁿ.
     /// </summary>
     public class Monomial : IFunction, IDividable
     {
         /// <summary>
-        /// Коэффицент a
+        /// Коэффицент a.
         /// </summary>
         Number Coefficient { get; set; }
 
         /// <summary>
-        /// Переменная x
+        /// Переменная x.
         /// </summary>
         char? Variable { get; set; } = null;
 
         /// <summary>
-        /// Показатель степени n
+        /// Показатель степени n.
         /// </summary>
         Number Exponent { get; set; }
-
 
         public IFunction Derivative => new Monomial(Coefficient * Exponent, Variable ?? 'x', Exponent - 1);
         public IFunction AntiDerivative => new Monomial(new(Coefficient, Exponent + 1), Variable ?? 'x', Exponent + 1);
@@ -36,11 +35,11 @@ namespace Pavlychev.Calculus.Functions
         Number IFunction.Coefficient => Coefficient;
 
         /// <summary>
-        /// Одночлен axⁿ
+        /// Создание одночлена axⁿ.
         /// </summary>
-        /// <param name="a">Коэффицент</param>
-        /// <param name="x">Переменная</param>
-        /// <param name="n">Показатель степени</param>
+        /// <param name="a">Коэффицент.</param>
+        /// <param name="x">Переменная.</param>
+        /// <param name="n">Показатель степени.</param>
         public Monomial(Number a, char? x, Number n)
         {
             Coefficient = a;
@@ -49,10 +48,10 @@ namespace Pavlychev.Calculus.Functions
         }
 
         /// <summary>
-        /// Одночлен aⁿ
+        /// Одночлен aⁿ.
         /// </summary>
-        /// <param name="a">Коэффицент</param>
-        /// <param name="n">Показатель степени</param>
+        /// <param name="a">Коэффицент.</param>
+        /// <param name="n">Показатель степени.</param>
         public Monomial(Number a, Number n)
         {
             Coefficient = a;
@@ -61,13 +60,10 @@ namespace Pavlychev.Calculus.Functions
 
         public override string ToString()
         {
-            //return $"({Coefficient}){Variable}{Exponent.ToSuperScriptString()}";
-            {
-                var c = Coefficient;
-                if (c == 0 || Variable == null) return "0";
+            var c = Coefficient;
+            if (c == 0 || Variable == null) return "0";
 
-                return $"{(c == 1 ? "" : (c == -1 ? "-" : $"{(c.Single ? "" : "(")}{c}{(c.Single ? "" : ")")}"))}{Variable}{(Exponent == 1 ? "" : Exponent.ToSuperScriptString())}";
-            }
+            return $"{(c == 1 ? "" : (c == -1 ? "-" : $"{(c.Single ? "" : "(")}{c}{(c.Single ? "" : ")")}"))}{Variable}{(Exponent == 1 ? "" : Exponent.ToSuperScriptString())}";
         }
 
         public double Gcd() => Coefficient.Gcd();

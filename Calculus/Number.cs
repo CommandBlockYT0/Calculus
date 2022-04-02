@@ -39,43 +39,22 @@ namespace Pavlychev.Calculus
 
         public IFunction InvertCoefficient => -this;
 
-        //public Number(double re)
-        //{
-        //    Re = re;
-        //    Im = 0;
-        //    Variable = null;
-
-        //    ReDen = 1;
-        //    ImDen = 1;
-        //    VariableDen = null;
-        //}
-
-        //public Number(double re, char var)
-        //{
-        //    Re = re;
-        //    Im = 0;
-        //    Variable = var;
-        //    Denominator = (Number)1;
-        //}
-
-        //public Number(double re, double im)
-        //{
-        //    Re = re;
-        //    Im = im;
-        //    Variable = null;
-        //    Denominator = (Number)1;
-        //}
-
-        //public Number(double re, double im, char? var)
-        //{
-        //    Re = re;
-        //    Im = im;
-        //    Variable = var;
-        //    Denominator = (Number)1;
-        //}
-
+        /// <summary>
+        /// Создание дроби.
+        /// </summary>
+        /// <param name="numerator">Числитель.</param>
+        /// <param name="denominator">Знаменатель.</param>
         public Number(Number numerator, Number denominator) : this(numerator.Re, numerator.Im, denominator.Re, denominator.Im, numerator.Variable, denominator.Variable) { }
 
+        /// <summary>
+        /// Расширенное создание комплексного числа.
+        /// </summary>
+        /// <param name="re">Действительная часть числителя.</param>
+        /// <param name="im">Мнимая часть числителя.</param>
+        /// <param name="reDen">Действительная часть знаменателя.</param>
+        /// <param name="imDen">Мнимая часть знаменателя.</param>
+        /// <param name="var">Переменная числителя.</param>
+        /// <param name="varDen">Переменная знаменателя.</param>
         public Number(double re, double im = 0, double reDen = 1, double imDen = 1, char? var = null, char? varDen = null)
         {
             var gcdRe = Gcd(Math.Abs(re) * 1000, Math.Abs(reDen) * 1000);
@@ -125,6 +104,10 @@ namespace Pavlychev.Calculus
 
         public override int GetHashCode() => base.GetHashCode();
 
+        /// <summary>
+        /// Метод для получения числа "сверху".
+        /// </summary>
+        /// <returns>Строка числа сверху.</returns>
         public string ToSuperScriptString()
         {
             string normalString = ToString();
@@ -146,7 +129,6 @@ namespace Pavlychev.Calculus
                 { '-', '⁻' },
                 { '(', '⁽' },
                 { ')', '⁾' },
-                { '/', ';' },
             };
 
             for (int i = 0; i < normalString.Length; i++)
