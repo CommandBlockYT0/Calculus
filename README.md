@@ -1,5 +1,7 @@
-# Calculus (Pavlychev.Calculus)
-Complex number calculating library with some calculus elements
+# Calculus (Pavlychev.Calculus) for .NET
+Complex number calculating library with some calculus elements.
+
+Библиблиотека для работы с комплексными числами и элементами матана.
 
 ## ToDo:
 - [X] Adding, substracting, multiplying and dividing complex numbers.
