@@ -28,7 +28,7 @@ namespace Pavlychev.Calculus.Functions
 
         public bool Negative => Coefficient.Negative;
 
-        public IFunction AbsCoefficient => new Monomial(new(MathC.Abs(Coefficient), reDen: Coefficient.ReDen, imDen: Coefficient.ImDen, var: Coefficient.Variable, varDen: Coefficient.VariableDen), Variable, Exponent);
+        public IFunction AbsCoefficient => new Monomial(new(MathC.Abs(Coefficient), reDen: Coefficient.ReDen, imDen: Coefficient.ImDen, var: Coefficient.Variable), Variable, Exponent);
 
         public IFunction InvertCoefficient => new Monomial(-Coefficient, Variable, Exponent);
 
@@ -48,22 +48,26 @@ namespace Pavlychev.Calculus.Functions
         }
 
         /// <summary>
-        /// Одночлен aⁿ.
+        /// Создание одночлена aⁿ.
         /// </summary>
         /// <param name="a">Коэффицент.</param>
         /// <param name="n">Показатель степени.</param>
-        public Monomial(Number a, Number n)
-        {
-            Coefficient = a;
-            Exponent = n;
-        }
+        public Monomial(Number a, Number n) : this(a, null, n) { }
+
+        /// <summary>
+        /// Создание одночлена ax.
+        /// </summary>
+        /// <param name="a">Коэффицент.</param>
+        /// <param name="x">Переменная.</param>
+        /// <param name="n">Показатель степени.</param>
+        public Monomial(Number a, char? x) : this(a, x, (Number)1) { }
 
         public override string ToString()
         {
             var c = Coefficient;
             if (c == 0 || Variable == null) return "0";
 
-            return $"{(c == 1 ? "" : (c == -1 ? "-" : $"{(c.Single ? "" : "(")}{c}{(c.Single ? "" : ")")}"))}{Variable}{(Exponent == 1 ? "" : Exponent.ToSuperScriptString())}";
+            return $"{(c == 1 ? "" : (c == -1 ? "-" : $"{(c.Single ? "" : "(")}{c}{(c.Single ? "" : ")")}"))}{(Exponent == 0 ? "" : $"{Variable}{(Exponent == 1 ? "" : Exponent.ToSuperScriptString())}")}";
         }
 
         public double Gcd() => Coefficient.Gcd();
