@@ -1,4 +1,5 @@
 # Calculus (Pavlychev.Calculus) for .NET
+## Later will be merged with [Pavlychev.Mathematics](https://github.com/PavlychevV/Mathematics)!
 Complex number calculating library with some calculus elements.
 
 Библиблиотека для работы с комплексными числами и элементами матана.
